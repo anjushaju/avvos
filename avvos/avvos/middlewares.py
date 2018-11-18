@@ -6,6 +6,8 @@
 # https://doc.scrapy.org/en/latest/topics/spider-middleware.html
 
 from scrapy import signals
+from scrapy.conf import settings
+from random import choice
 
 
 class AvvosSpiderMiddleware(object):
@@ -78,6 +80,9 @@ class AvvosDownloaderMiddleware(object):
         # - or return a Request object
         # - or raise IgnoreRequest: process_exception() methods of
         #   installed downloader middleware will be called
+        user_agent = choice(settings.get('USER_AGENTS'))
+        request.meta['proxy'] = choice(settings.get('PROXY_LIST'))
+        request.headers['User-Agent'] = user_agent
         return None
 
     def process_response(self, request, response, spider):
