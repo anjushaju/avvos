@@ -13,4 +13,10 @@ class AvvosItem(scrapy.Item):
     # name = scrapy.Field()
     name = scrapy.Field()
     licence = scrapy.Field()
+    image = scrapy.Field()
+    avvo_rating = scrapy.Field()
+    client_rating = scrapy.Field()
+    reviews = scrapy.Field()
+    about_me = scrapy.Field()
+    practice_areas = scrapy.Field()
     pass
